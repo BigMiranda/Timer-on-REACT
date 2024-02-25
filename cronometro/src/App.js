@@ -117,7 +117,7 @@ class App extends Component{
     return newValue;
   }
 
-  //Add at the end the char, moving the rest to the left
+  //Move each char one digit to the right and adds zero at the leftmost one
   reWrite_inputTime_Deleting(inputTimeAux){
     var lastChar = "0";
     let newValue = inputTimeAux.slice();
