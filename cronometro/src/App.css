@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    color: white; /* Define a cor do texto como branco */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; /* Para posicionar os timers */
+}
+
+.timerInput, .timerOutput {
+    width: 600px;
+    padding: 10px; /* Aumentando o espaço interno */
+    margin-bottom: 10px;
+    font-size: 100px; /* Aumentando o tamanho da fonte */
+    text-align: center; /* Centralizando o texto */
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Removendo a borda */
+    outline: none; /* Removendo a aparência do foco */
+}
+
+.timerInput {
+    cursor: pointer; /* Alterando o cursor */
+    transition: all 0.3s ease; /* Transição suave */
+    color: #9c9c9c; /* Cor do texto acinzentada */
+    position: relative;
+    z-index: 1; /* Para manter acima do timerOutput */
+    border-bottom: 3px solid #9c9c9c; /* Linha branca na base */
+}
+
+.timerOutput {
+    color: white; /* Define a cor do texto como branco */
+    top: 0;
+    left: 0;
+    z-index: 0; /* Por baixo do timerInput */
+}
+
+.timerInput:hover {
+    color: white; /* Mudando a cor do texto ao passar o mouse */
+    border-bottom: 3px solid white; /* Linha branca na base */
+}
+
+.timerInput:focus {
+    color: white; /* Mantendo a cor do texto como branco quando em foco */
+    border-bottom: 3px solid white; /* Linha branca na base */
+}
+
+.butons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px; /* Adicionando espaço interno */
+    border: none; /* Removendo a borda */
+    font-size: 44px; /* Tamanho da fonte */
+    cursor: pointer; /* Alterando o cursor */
+    transition: all 0.3s ease; /* Transição suave */
+    color: #000; /* Cor do texto acinzentada */
+}
+
+#btnStrt_stop {
+    background-color: white; /* Fundo branco */
+}
+
+#btnRst {
+    background-color: rgb(250, 175, 175); /* Fundo branco */
+}
+
+#btnStrt_stop:hover {
+    background-color: #777777; /* Mudando a cor de fundo ao passar o mouse */
+    color: white; /* Mudando a cor do texto ao passar o mouse */
+}
+
+#btnRst:hover {
+    background-color: #5e0202; /* Mudando a cor de fundo ao passar o mouse */
+    color: rgb(253, 185, 185); /* Mudando a cor do texto ao passar o mouse */
+}
+
+/* Estilos adicionais para responsividade dos botões */
+@media screen and (max-width: 768px) {
+    .btn {
+        font-size: 24px; /* Reduzindo o tamanho da fonte em telas menores */
+        padding: 8px 16px; /* Reduzindo o espaço interno em telas menores */
+    }
+}
