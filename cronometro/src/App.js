@@ -11,7 +11,7 @@ class App extends Component{
         seconds: 0,
         milliseconds: 0
       },
-      timerInput: "00:00:00",
+      timerInput: "00:50:00",
       isRunning: false      
     }
 
@@ -31,7 +31,7 @@ class App extends Component{
     seconds = state.timerInput.substring(6,8);
 
     if(state.timerInput.length == 12){
-      milliseconds = state.timerInput.substring(9,11);
+      milliseconds = state.timerInput.substring(9,10);
     }else{
       milliseconds = 0;
     }
@@ -59,7 +59,7 @@ class App extends Component{
     let state = this.state;
     let { hours, minutes, seconds, milliseconds } = this.state.timer;
 
-    milliseconds -= 1;
+    milliseconds -= 10;
     if (milliseconds < 0) {
       milliseconds = 999;
       seconds--;
@@ -77,9 +77,10 @@ class App extends Component{
       this.resetTimer();
     }
 
-    state.timerInput = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
+    state.timerInput = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
     state.timer = { hours, minutes, seconds, milliseconds };
     this.setState(state);
+    document.title = state.timerInput.substring(0, 8);
   };
 
   mudaTimerInput(e) {
@@ -93,6 +94,8 @@ class App extends Component{
       var newValue = this.state.timerInput;
       newValue = this.reWrite_inputTime_Deleting(newValue);
       this.setState({ timerInput: newValue });
+    } else if(e.keyCode == 32 || e.keyCode == 13){
+      this.startStopTimer();
     }
     else{
       this.btnStrt_stopRef.focus();
@@ -121,7 +124,7 @@ class App extends Component{
   reWrite_inputTime_Deleting(inputTimeAux){
     var lastChar = "0";
     let newValue = inputTimeAux.slice();
-    //00:00:00:000 or 00:00:00
+    //00:00:00:00 or 00:00:00
     //Starts from 1 because 0 will be replaced
     for(var i = 0; i <= newValue.length - 1; i++){
       var charFor = newValue.charAt(i);
@@ -140,7 +143,7 @@ class App extends Component{
       clearInterval(this.timerInterval);
       state.isRunning = false;
     }else{ //Não está rodando, logo é um início ou reinício
-      this.timerInterval = setInterval(this.updateTimer, 1);
+      this.timerInterval = setInterval(this.updateTimer, 10);
       state.isRunning = true;
       this.validateInputTime();
     }
@@ -157,7 +160,7 @@ class App extends Component{
   }
 
   render(){
-    const { hours, minutes, seconds, milliseconds, isRunning } = this.state;
+    const isRunning = this.state.isRunning;
     let timerElement;
     if (isRunning) {
       timerElement = (
