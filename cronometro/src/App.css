@@ -92,3 +92,20 @@ body {
         padding: 8px 16px; /* Reduzindo o espaço interno em telas menores */
     }
 }
+
+/* CSS para os radio buttons */
+.options {
+    display: flex;
+    gap: 20px; /* Espaço entre os radio buttons */
+    margin-top: 20px; /* Espaço acima dos radio buttons */
+}
+
+.radioOption {
+    font-size: 20px; /* Tamanho da fonte dos labels */
+    display: flex;
+    align-items: center;
+}
+
+#radioYes input, #radioNo input {
+    margin-right: 10px; /* Espaço entre o radio button e o label */
+}
